@@ -5,40 +5,42 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "CREATURE")
 public class Creature {
 	
-	  private @Id @GeneratedValue Long id;
-	  private String dnaSequence;
-	  private String creatureClass;
+	  private @Id @GeneratedValue Integer ID;
+	  private String DNA;
+	  private String CREATURE_CLASS;
 	  
 	  Creature(){}
 
 	  public Creature(String dnaSequence, String creatureClass) {
-		  this.dnaSequence = dnaSequence;
-		  this.creatureClass = creatureClass;
+		  this.DNA = dnaSequence;
+		  this.CREATURE_CLASS = creatureClass;
 	  }
 
-	  public Long getId() {
-		  return id;
+	  public Integer getId() {
+		  return ID;
 	  }
-	  public void setId(Long id) {
-		  this.id = id;
+	  public void setId(Integer id) {
+		  this.ID = id;
 	  }
 	  
 	  public String getDnaSequence() {
-		  return dnaSequence;
+		  return DNA;
 	  }
 	  
 	  public void setDnaSequence(String dnaSequence) {
-		  this.dnaSequence = dnaSequence;
+		  this.DNA = dnaSequence;
 	  }
 	  public String getCreatureClass() {
-		  return creatureClass;
+		  return CREATURE_CLASS;
 	  }
 	  public void setCreatureClass(String creatureClass) {
-		  this.creatureClass = creatureClass;
+		  this.CREATURE_CLASS = creatureClass;
 	  }
 	  
 	  @Override
@@ -48,17 +50,17 @@ public class Creature {
 	    if (!(o instanceof Creature))
 	      return false;
 	    Creature creature = (Creature) o;
-	    return Objects.equals(this.dnaSequence, creature.dnaSequence) && Objects.equals(this.creatureClass, creature.creatureClass);
+	    return Objects.equals(this.DNA, creature.DNA) && Objects.equals(this.CREATURE_CLASS, creature.CREATURE_CLASS);
 	  }
 
 	  @Override
 	  public int hashCode() {
-	    return Objects.hash(this.id, this.dnaSequence, this.dnaSequence);
+	    return Objects.hash(this.ID, this.DNA, this.DNA);
 	  }
 
 	  @Override
 	  public String toString() {
-	    return "Creature{" + "id=" + this.id + ", dnaSequence='" + this.dnaSequence + '\'' + ", class='" + this.creatureClass + '\'' + '}';
+	    return "Creature{" + "id=" + this.ID + ", dnaSequence='" + this.DNA + '\'' + ", class='" + this.CREATURE_CLASS + '\'' + '}';
 	  }
 	  
 }
