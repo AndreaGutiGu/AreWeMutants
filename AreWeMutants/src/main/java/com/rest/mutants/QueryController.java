@@ -26,21 +26,30 @@ public class QueryController {
 	  
 	  if(creature != null)
 	  {
-		  result = creature.getCreatureClass().equals("Mutant") ? true : false;
+		  result = creature.getCreatureClass().equals("Mutant");
 	  }
 	  else
 	  {
-		  result = DNAValidator.isMutant(sequence.getDna());
-		  creature = new Creature(sequence.toString(), result?"Mutant":"Human");
-		  repository.save(creature);
+		  if(DNAValidator.isValid(sequence.getDna()))
+		  {
+			  result = DNAValidator.isMutant(sequence.getDna());
+			  creature = new Creature(sequence.toString(), result ? "Mutant" : "Human" );
+			  repository.save(creature);
+		  }
+		  else
+		  {
+			  response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+
+			  return "Not valid entry";
+		  }
 	  }
 	  
-	  if(!result)
-		  response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-	  else
+	  if(result)
 		  response.setStatus(HttpServletResponse.SC_OK);
+	  else
+		  response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 
-	  return result ? "Mutant!!" : "Not mutant";
+	  return result ? "Mutant" : "Not Mutant";
   }
   
   @GetMapping("/stats")
