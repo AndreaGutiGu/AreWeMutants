@@ -1,5 +1,7 @@
 package com.mutants;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class DNAValidator {
@@ -10,6 +12,7 @@ public class DNAValidator {
 		int line = 0;
 		int pos = 0;
 		String aux = "";
+
 		
 		//Row
 		count += (int) strDNA.filter(x -> x.matches(".*(AAAA|CCCC|GGGG|TTTT).*")).count();
@@ -82,14 +85,21 @@ public class DNAValidator {
 		return false;
 	}
 	
-	public static void main(String[] args) {
-		String [] dna = {"AAAAAA", 
-				"CGGTGC", 
-				"TTATGT", 
-				"AGTAAG", 
-				"GTTATA", 
-				"GCCCTG"};
-		System.out.println(isMutant(dna));
+	public static boolean isValid(String[] dna) {
+		int lengt = dna.length;
+		
+		if(lengt == 0)
+			return false;
+
+		List<String> sequence = Arrays.asList(dna);
+		
+		for(String element : sequence)
+		{
+			if(element.matches(".*[^ACGT]{1,}.*") || element.length() != lengt) 
+				return false;
+		}
+		
+		return true;
 	}
 
 }

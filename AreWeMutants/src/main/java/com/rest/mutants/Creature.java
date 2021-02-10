@@ -51,16 +51,5 @@ public class Creature {
 	      return false;
 	    Creature creature = (Creature) o;
 	    return Objects.equals(this.DNA, creature.DNA) && Objects.equals(this.CREATURE_CLASS, creature.CREATURE_CLASS);
-	  }
-
-	  @Override
-	  public int hashCode() {
-	    return Objects.hash(this.ID, this.DNA, this.DNA);
-	  }
-
-	  @Override
-	  public String toString() {
-	    return "Creature{" + "id=" + this.ID + ", dnaSequence='" + this.DNA + '\'' + ", class='" + this.CREATURE_CLASS + '\'' + '}';
-	  }
-	  
+	  }	  
 }
