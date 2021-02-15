@@ -10,7 +10,7 @@ A Mutant sequence is such one has at least two groups of 4 succesive letter A, C
 
 To know if a DNA sequence, the POST service https://arewemutants.rj.r.appspot.com/mutant is available, sending a JSON query with this format
 <p>{
-<p>    "dna":["ATGCGA", "CAAGGC", "TTGTZT","AGACGG","CCCCTA","TCACTG"]
+<p>    "dna":["ATGCGA", "CAAGGC", "TTGTAT","AGACGG","CCCCTA","TCACTG"]
 <p>}
 
 To get the number of sequences validated belonging to each class and the relation between two numbers, the GET service https://arewemutants.rj.r.appspot.com/stats is available.
