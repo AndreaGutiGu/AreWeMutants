@@ -1,7 +1,8 @@
-package com.rest.mutants;
+package com.rest.mutants.creature;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,14 +13,16 @@ import javax.persistence.Table;
 public class Creature {
 	
 	  private @Id @GeneratedValue Integer ID;
+	  @Column(name = "dna")
 	  private String DNA;
-	  private String CREATURE_CLASS;
+	  @Column(name = "creatureclass")
+	  private String creatureClass;
 	  
 	  Creature(){}
 
 	  public Creature(String dnaSequence, String creatureClass) {
 		  this.DNA = dnaSequence;
-		  this.CREATURE_CLASS = creatureClass;
+		  this.creatureClass = creatureClass;
 	  }
 
 	  public Integer getId() {
@@ -37,10 +40,10 @@ public class Creature {
 		  this.DNA = dnaSequence;
 	  }
 	  public String getCreatureClass() {
-		  return CREATURE_CLASS;
+		  return creatureClass;
 	  }
 	  public void setCreatureClass(String creatureClass) {
-		  this.CREATURE_CLASS = creatureClass;
+		  this.creatureClass = creatureClass;
 	  }
 	  
 	  @Override
@@ -50,6 +53,6 @@ public class Creature {
 	    if (!(o instanceof Creature))
 	      return false;
 	    Creature creature = (Creature) o;
-	    return Objects.equals(this.DNA, creature.DNA) && Objects.equals(this.CREATURE_CLASS, creature.CREATURE_CLASS);
+	    return Objects.equals(this.DNA, creature.DNA) && Objects.equals(this.creatureClass, creature.creatureClass);
 	  }	  
 }

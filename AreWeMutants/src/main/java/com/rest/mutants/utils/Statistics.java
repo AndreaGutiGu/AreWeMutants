@@ -1,4 +1,4 @@
-package com.rest.mutants;
+package com.rest.mutants.utils;
 
 public class Statistics {
 	private Integer count_mutant_dna;

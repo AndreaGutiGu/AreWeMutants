@@ -1,9 +1,7 @@
-package com.rest.mutants;
+package com.rest.mutants.utils;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-
 
 
 public class DNASequence {
@@ -27,11 +25,12 @@ public class DNASequence {
 	    
 	    return Arrays.equals(this.getDna(), sequence.getDna());
 	}
-
+	
+/*	
 	@Override
 	public int hashCode() {
 		return Objects.hash((Object[])this.dna);
-	}
+	}*/
 
 	@Override
 	public String toString() {
