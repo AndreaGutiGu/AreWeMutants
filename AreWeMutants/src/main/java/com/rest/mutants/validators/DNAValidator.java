@@ -1,4 +1,4 @@
-package com.mutants;
+package com.rest.mutants.validators;
 
 import java.util.Arrays;
 import java.util.List;
