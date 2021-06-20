@@ -12,6 +12,7 @@
 	<groupId>com.rest</groupId>
 	<artifactId>mutants</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>mutants</name>
 	<description>Are we mutants</description>
 	<properties>
