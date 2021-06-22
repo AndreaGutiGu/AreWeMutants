@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class StatisticsTest {
 	
+    /**
+     * Validates constructor with parameters
+     */
 	@Test
 	public void constructorTest(){
 		Statistics stats = new Statistics(10, 5, (float) 3);
@@ -15,6 +18,9 @@ public class StatisticsTest {
 				&& stats.getRatio() == 3);
 	}
 
+    /**
+     * Validates empty constructor and setters
+     */
 	@Test
 	public void settersTest(){
 		Statistics stats = new Statistics(0,0,(float) 0);

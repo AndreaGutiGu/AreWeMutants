@@ -5,6 +5,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class DNAValidatorTest {
+
+    /**
+     * Validation of DNA with incorrect length elements 
+     */
 	@Test
 	public void isValidTestNotValidLength()
 	{
@@ -13,6 +17,9 @@ public class DNAValidatorTest {
 		assertTrue(!DNAValidator.isValid(dna));
 	}
 
+    /**
+     * Validation of DNA with incorrect elements 
+     */
 	@Test
 	public void isValidTestNotValidElement()
 	{
@@ -21,6 +28,9 @@ public class DNAValidatorTest {
 		assertTrue(!DNAValidator.isValid(dna));
 	}
 
+    /**
+     * Validation of empty DNA  
+     */
 	@Test
 	public void isValidTestEmptyDNA()
 	{
@@ -29,6 +39,9 @@ public class DNAValidatorTest {
 		assertTrue(!DNAValidator.isValid(dna));
 	}
 	
+    /**
+     * Validation of Mutant DNA in row and \
+     */
 	@Test
 	public void isMutantTrue()
 	{
@@ -37,6 +50,9 @@ public class DNAValidatorTest {
 		assertTrue(DNAValidator.isMutant(dna));
 	}
 
+    /**
+     * Validation of Mutant DNA in column
+     */
 	@Test
 	public void isMutantColumnTrue()
 	{
@@ -45,6 +61,9 @@ public class DNAValidatorTest {
 		assertTrue(DNAValidator.isMutant(dna));
 	}
 
+    /**
+     * Validation of Human DNA 
+     */
 	@Test
 	public void isMutantFalse()
 	{

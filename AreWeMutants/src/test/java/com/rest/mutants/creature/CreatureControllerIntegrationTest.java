@@ -25,7 +25,6 @@ import java.util.List;
 import static org.powermock.api.mockito.PowerMockito.when;
 
 
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(CreatureController.class)
 public class CreatureControllerIntegrationTest {
@@ -50,6 +49,10 @@ public class CreatureControllerIntegrationTest {
     @Mock
     private Statistics mockStatistics;
 
+    /**
+     * Validates the response status given by GET method /mutant/stats
+     * @throws Exception
+     */
     @Test
     public void getStatisticsTest()
       throws Exception 
@@ -63,7 +66,10 @@ public class CreatureControllerIntegrationTest {
           .andExpect(status().isOk());
     }
     
-    
+    /**
+     * Validates the response status given by POST method /mutant when it is a Mutant
+     * @throws Exception
+     */
     @Test
     public void isMutantTrueTest()
       throws Exception 
@@ -89,6 +95,10 @@ public class CreatureControllerIntegrationTest {
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Validates the response status given by POST method /mutant when it is a Human
+     * @throws Exception
+     */
     @Test
     public void isMutantFalseTest()
       throws Exception 
@@ -112,6 +122,34 @@ public class CreatureControllerIntegrationTest {
   	      		.content(json.toString())
     			.contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isForbidden());
+    }
+
+    /**
+     * Validates the response status given by POST method /mutant when it is a not valid entry
+     * @throws Exception
+     */
+    @Test
+    public void isMutantNotValidTest()
+      throws Exception 
+    {
+    	JSONArray jsonDNA = new JSONArray();
+    	jsonDNA.put("A");
+    	jsonDNA.put("C");
+
+    	JSONObject json = new JSONObject();
+    	json.put("dna",jsonDNA);
+
+    	String[] dna = {"A", "C"};
+    	DNASequence sequence = new DNASequence();
+    	sequence.setDna(dna);
+
+    	when(service.isValidDNA(sequence)).thenReturn(false);
+    	
+    	mvc.perform(MockMvcRequestBuilders
+    			.post("/mutant")
+  	      		.content(json.toString())
+    			.contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
 
 }

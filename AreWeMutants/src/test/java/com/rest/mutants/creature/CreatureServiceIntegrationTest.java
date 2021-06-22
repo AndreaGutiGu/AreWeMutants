@@ -31,9 +31,52 @@ public class CreatureServiceIntegrationTest {
     @Mock
     private List<Creature> mockMutantList;
 
+    @Mock
+    private Creature mockCreature;
+
     private CreatureService service;
 
-	
+    /**
+     * Validates a Mutant DNA already in the database
+     */
+    @Test
+    public void isMutantCreatedTestTrue(){
+
+    	service = new CreatureService();
+    	Whitebox.setInternalState(service, "repository", creatureRepository);
+    	
+    	DNASequence sequence = new DNASequence();
+    	String[]dna = {"AAAA", "AAAA", "AAAA", "AAAA"};
+    	sequence.setDna(dna);
+
+    	when(creatureRepository.findByDNA(sequence.toString())).thenReturn(mockCreature);
+    	when(mockCreature.getCreatureClass()).thenReturn("Mutant");
+    	
+    	assertTrue(service.isMutant(sequence));
+    }
+
+    /**
+     * Validates a Human DNA already in the database
+     */
+    @Test
+    public void isMutantCreatedTestFalse(){
+
+    	service = new CreatureService();
+    	Whitebox.setInternalState(service, "repository", creatureRepository);
+    	
+    	DNASequence sequence = new DNASequence();
+    	String[]dna = {"AAAA", "AAAA", "AAAA", "AAAA"};
+    	sequence.setDna(dna);
+
+    	when(creatureRepository.findByDNA(sequence.toString())).thenReturn(mockCreature);
+    	when(mockCreature.getCreatureClass()).thenReturn("Human");
+    	
+    	assertTrue(!service.isMutant(sequence));
+    }
+    
+    /**
+     * Validates a Mutant DNA not in the database
+     */
     @Test
     public void isMutantTestTrue(){
 
@@ -45,12 +88,15 @@ public class CreatureServiceIntegrationTest {
     	sequence.setDna(dna);
 
     	when(creatureRepository.findByDNA(sequence.toString())).thenReturn(null);
-    	when(creatureRepository.save(Mockito.any(Creature.class))).thenReturn(new Creature());
+    	when(creatureRepository.save(Mockito.any(Creature.class))).thenReturn(mockCreature);
     	
     	
     	assertTrue(service.isMutant(sequence));
     }
     
+    /**
+     * Validates a Human DNA not in the database
+     */
     @Test
     public void isMutantTestFalse(){
     	service = new CreatureService();
@@ -61,11 +107,14 @@ public class CreatureServiceIntegrationTest {
     	sequence.setDna(dna);
 
     	when(creatureRepository.findByDNA(sequence.toString())).thenReturn(null);
-    	when(creatureRepository.save(Mockito.any(Creature.class))).thenReturn(new Creature());
+    	when(creatureRepository.save(Mockito.any(Creature.class))).thenReturn(mockCreature);
     	
     	assertTrue(!service.isMutant(sequence));
     }
     
+    /**
+     * Tests a valid DNA sequence
+     */
     @Test
     public void isValidDNATestTrue(){
     	service = new CreatureService();
@@ -77,6 +126,9 @@ public class CreatureServiceIntegrationTest {
     	assertTrue(service.isValidDNA(sequence));
     }
 
+    /**
+     * Tests a DNA sequence, invalid because of the number of lines
+     */
     @Test
     public void isValidDNATestFalse(){
     	service = new CreatureService();
@@ -88,6 +140,9 @@ public class CreatureServiceIntegrationTest {
     	assertTrue(!service.isValidDNA(sequence));
     }
 
+    /**
+     * Validates the ratio gotten from the given number of humans and mutants
+     */
     @Test
     public void getStatisticsTest(){
     	service = new CreatureService();
@@ -101,6 +156,9 @@ public class CreatureServiceIntegrationTest {
     	assertTrue(service.getStatistics().getRatio() == 1);
     }
 
+    /**
+     * Validates the ratio gotten from the given number of humans and mutants, when number of humans is 0
+     */
     @Test
     public void getStatisticsNoHumansTest(){
     	service = new CreatureService();

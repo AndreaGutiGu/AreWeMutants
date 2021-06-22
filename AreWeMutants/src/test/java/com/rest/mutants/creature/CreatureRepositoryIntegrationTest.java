@@ -19,6 +19,9 @@ public class CreatureRepositoryIntegrationTest {
     @Autowired
     private CreatureRepository creatureRepository;
 
+    /**
+     * Validates a DNA already present in the database
+     */
     @Test
     public void findByDNATest(){
     	Creature creature = new Creature("AAAA|CAGT|GCTA|CTAG", "Mutant");
@@ -30,6 +33,9 @@ public class CreatureRepositoryIntegrationTest {
         assertTrue(found.equals(creature));
     }
     
+    /**
+     * Validates the number of Human DNAs in the database
+     */
     @Test
     public void findByCreatureClassTestHuman(){
     	Creature creature = new Creature("A|A|A|C", "Human");
@@ -46,6 +52,9 @@ public class CreatureRepositoryIntegrationTest {
         assertTrue(creatureRepository.findByCreatureClass("Human").size()==2);
     }
     
+    /**
+     * Validates the number of Mutant DNAs in the database
+     */
     @Test
     public void findByCreatureClassTestMutant(){
     	Creature creature = new Creature("A|A|A|C", "Human");
