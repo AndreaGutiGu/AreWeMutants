@@ -21,7 +21,7 @@ public class DNAValidator {
 			return true;
 		
 		//Column
-		while(line < dna.length - 4 && count < 2)
+		while(line < dna.length - 3 && count < 2)
 		{
 			aux = dna[line] + dna[line+1] + dna[line+2] + dna[line+3];
 			

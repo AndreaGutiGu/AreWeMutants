@@ -56,7 +56,7 @@ public class DNAValidatorTest {
 	@Test
 	public void isMutantColumnTrue()
 	{
-		String [] dna = {"ATGCT", "AAGGG", "ATGTG","AGACG","GGACG"};
+		String [] dna = {"ATGC", "AAGG", "ATGT","AGGC"};
 
 		assertTrue(DNAValidator.isMutant(dna));
 	}
