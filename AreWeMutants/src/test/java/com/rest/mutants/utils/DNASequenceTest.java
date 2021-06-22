@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class DNASequenceTest {
 	
+    /**
+     * Validates setter method
+     */
 	@Test
 	public void setterTest(){
 		DNASequence sequence = new DNASequence();
@@ -16,6 +19,9 @@ public class DNASequenceTest {
 		assertTrue(sequence.getDna().length == 3);
 	}
 	
+    /**
+     * Validates toString method
+     */
 	@Test
 	public void toStringTest(){
 		DNASequence sequence = new DNASequence();
@@ -26,6 +32,9 @@ public class DNASequenceTest {
 		assertTrue(sequence.toString().equals("A|B|C|"));
 	}
 	
+    /**
+     * Validates equality for objects with the same contents
+     */
 	@Test
 	public void equalsTestTrue() {
 		DNASequence sequence1 = new DNASequence();
@@ -38,6 +47,9 @@ public class DNASequenceTest {
 		assertTrue(sequence1.equals(sequence2));
 	}
 
+    /**
+     * Validates equality for objects with different contents
+     */
 	@Test
 	public void equalsTestFalse() {
 		DNASequence sequence1 = new DNASequence();
