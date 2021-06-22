@@ -37,8 +37,6 @@ public class CreatureService {
 	public Statistics getStatistics() {
 		Integer humans = repository.findByCreatureClass("Human").size();
 		Integer mutants = repository.findByCreatureClass("Mutant").size();
-		//Integer humans = repository.getNumberofHumans();
-		//Integer mutants = repository.getNumberofMutants();
 		
 		Float ratio = humans > 0 ?
 				(float)mutants/(float)humans

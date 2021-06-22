@@ -26,12 +26,6 @@ public class DNASequence {
 	    return Arrays.equals(this.getDna(), sequence.getDna());
 	}
 	
-/*	
-	@Override
-	public int hashCode() {
-		return Objects.hash((Object[])this.dna);
-	}*/
-
 	@Override
 	public String toString() {
 		List<String> list = Arrays.asList(dna);
