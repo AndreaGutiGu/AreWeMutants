@@ -1,11 +1,11 @@
 package com.rest.mutants.creature;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.powermock.reflect.Whitebox;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
@@ -17,12 +17,9 @@ import java.util.List;
 import com.rest.mutants.utils.DNASequence;
 
 @RunWith(SpringRunner.class)
-//@DataJpaTest
+@DataJpaTest
 public class CreatureServiceIntegrationTest {
-    //@Autowired
-    //private TestEntityManager entityManager;
-
-	@MockBean
+	@Mock
     private CreatureRepository creatureRepository;
     
     @Mock
@@ -39,7 +36,6 @@ public class CreatureServiceIntegrationTest {
 	
     @Test
     public void isMutantTestTrue(){
-
 
     	service = new CreatureService();
     	Whitebox.setInternalState(service, "repository", creatureRepository);
