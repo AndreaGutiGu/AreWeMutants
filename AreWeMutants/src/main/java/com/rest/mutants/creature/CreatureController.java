@@ -35,7 +35,12 @@ public class CreatureController {
 
 	  return result ? "Mutant" : "Not Mutant";
   }
-  
+
+  @RequestMapping("")
+  void init(HttpServletResponse response) {
+	  response.setStatus(HttpServletResponse.SC_OK);
+  }
+
   @RequestMapping("/mutant/stats")
   Statistics getStatistics() {
 	  return service.getStatistics();
