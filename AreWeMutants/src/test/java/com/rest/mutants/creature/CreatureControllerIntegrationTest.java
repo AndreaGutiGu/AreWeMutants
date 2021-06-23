@@ -50,7 +50,7 @@ public class CreatureControllerIntegrationTest {
     private Statistics mockStatistics;
 
     /**
-     * Validates the response status given by GET method /mutant/stats
+     * Validates the response status given by GET method /stats
      * @throws Exception
      */
     @Test
@@ -61,7 +61,7 @@ public class CreatureControllerIntegrationTest {
     	when(service.getStatistics()).thenReturn(stats);
 
     	mvc.perform(MockMvcRequestBuilders
-    	  .get("/mutant/stats")
+    	  .get("/stats")
           .accept(MediaType.APPLICATION_JSON))
           .andExpect(status().isOk());
     }

@@ -41,7 +41,7 @@ public class CreatureController {
 	  response.setStatus(HttpServletResponse.SC_OK);
   }
 
-  @RequestMapping("/mutant/stats")
+  @RequestMapping("/stats")
   Statistics getStatistics() {
 	  return service.getStatistics();
   }
