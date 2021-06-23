@@ -24,7 +24,7 @@ To determine if a DNA sequence, the POST service https://mutants-317611.rj.r.app
 <center><img src="https://user-images.githubusercontent.com/44385221/123018381-107a4080-d394-11eb-86f3-509f5272511d.png" ></center>
 
 
-To get the number of sequences validated belonging to each class and the relation between two numbers, the GET service https://mutants-317611.rj.r.appspot.com/mutant/stats is available. Resul is given in JSON format:
+To get the number of sequences validated belonging to each class and the relation between two numbers, the GET service https://mutants-317611.rj.r.appspot.com/stats is available. Resul is given in JSON format:
 <center><img src="https://user-images.githubusercontent.com/44385221/123018138-a19ce780-d393-11eb-9ecb-fe19974bb675.png" ></center>
 
 This is the link for a Collection of tests from Postman
