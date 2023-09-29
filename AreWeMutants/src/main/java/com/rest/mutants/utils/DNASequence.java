@@ -38,4 +38,7 @@ public class DNASequence {
 		return dnaSequence;
 	}
 	  	
+	public static void sayHello () {´
+
+	}
 }

@@ -103,4 +103,7 @@ public class DNAValidator {
 		return true;
 	}
 
+	public static void sayHello () {´
+
+	}
 }
