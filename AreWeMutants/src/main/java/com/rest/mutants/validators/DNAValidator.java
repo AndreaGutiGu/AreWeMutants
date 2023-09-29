@@ -85,6 +85,7 @@ public class DNAValidator {
 		return false;
 	}
 	
+	//Adding a comment
 	public static boolean isValid(String[] dna) {
 		int lengt = dna.length;
 		
